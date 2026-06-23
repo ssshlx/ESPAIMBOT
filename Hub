@@ -14,20 +14,19 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
--- Colores
 local NEGRO = Color3.fromRGB(0, 0, 0)
 local VERDE = Color3.fromRGB(0, 255, 0)
 local VERDE_OSCURO = Color3.fromRGB(0, 40, 0)
 local ROJO = Color3.fromRGB(255,0,0)
 
--- 1. Crear el ScreenGui
+
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "LegitHubGui"
 screenGui.ResetOnSpawn = false
 screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 screenGui.Parent = playerGui
 
--- 2. Frame principal (contenedor)
+
 local mainFrame = Instance.new("Frame")
 mainFrame.Name = "MainFrame"
 mainFrame.Size = UDim2.new(0, 500, 0, 300)
@@ -36,18 +35,17 @@ mainFrame.BackgroundColor3 = NEGRO
 mainFrame.BorderSizePixel = 0
 mainFrame.Parent = screenGui
 
--- Bordes redondeados
+
 local corner = Instance.new("UICorner")
 corner.CornerRadius = UDim.new(0, 12)
 corner.Parent = mainFrame
 
--- Borde verde alrededor del frame
 local stroke = Instance.new("UIStroke")
 stroke.Color = VERDE
 stroke.Thickness = 2
 stroke.Parent = mainFrame
 
--- 3. Header "LEGIT HUB"
+
 local header = Instance.new("TextLabel")
 header.Name = "Header"
 header.Size = UDim2.new(1, 0, 0, 60)
@@ -59,7 +57,7 @@ header.Font = Enum.Font.GothamBold
 header.TextSize = 42
 header.Parent = mainFrame
 
--- Línea decorativa debajo del header
+
 local divider = Instance.new("Frame")
 divider.Size = UDim2.new(0.8, 0, 0, 2)
 divider.Position = UDim2.new(0.1, 0, 0, 90)
@@ -71,20 +69,19 @@ local dividerCorner = Instance.new("UICorner")
 dividerCorner.CornerRadius = UDim.new(0, 2)
 dividerCorner.Parent = divider
 
--- 4. Mensaje de estado
+
 local mensaje = Instance.new("TextLabel")
 mensaje.Name = "Mensaje"
 mensaje.Size = UDim2.new(0.9, 0, 0, 80)
 mensaje.Position = UDim2.new(0.05, 0, 0.4, 0)
 mensaje.BackgroundTransparency = 1
-mensaje.Text = "We are Currently Fixing in a Potential Issue\nPlease Be patient."
+mensaje.Text = "We are Currently Fixing a Potential Issue\nPlease Be patient."
 mensaje.TextColor3 = VERDE
 mensaje.Font = Enum.Font.Gotham
 mensaje.TextSize = 20
 mensaje.TextWrapped = true
 mensaje.Parent = mainFrame
 
--- 5. Botón para cerrar
 local btnCerrar = Instance.new("TextButton")
 btnCerrar.Name = "BtnCerrar"
 btnCerrar.Size = UDim2.new(0, 140, 0, 40)
@@ -106,7 +103,6 @@ btnStroke.Color = VERDE
 btnStroke.Thickness = 2
 btnStroke.Parent = btnCerrar
 
--- Efecto hover en el botón
 btnCerrar.MouseEnter:Connect(function()
     btnCerrar.BackgroundColor3 = VERDE_OSCURO
 end)
@@ -115,12 +111,10 @@ btnCerrar.MouseLeave:Connect(function()
     btnCerrar.BackgroundColor3 = NEGRO
 end)
 
--- 6. Función para cerrar el GUI
 btnCerrar.MouseButton1Click:Connect(function()
     screenGui:Destroy()
 end)
 
--- También permitir cerrar con la tecla ESC (opcional)
 local UserInputService = game:GetService("UserInputService")
 UserInputService.InputBegan:Connect(function(input, gameProcessed)
     if gameProcessed then return end
